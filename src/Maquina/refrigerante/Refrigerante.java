@@ -1,5 +1,7 @@
 package Maquina.refrigerante;
 
+import java.util.Scanner;
+
 public class Refrigerante {
 
     private int numero;
@@ -51,36 +53,35 @@ public class Refrigerante {
 
     public void mostrarProdutos()
     {
-        System.out.println(nome+" \t R$"+preco+" -- "+litros +" ml " + "\t || Código " + numero);
+        System.out.println(nome+" \t R$"+preco+" -- "+litros + " ml " + "\t || Código " + numero);
     }
 
 
 
-    public void compra(Double dinheiro, int numero, Double troco2) {
-        Double troco;
-        dinheiro = dinheiro;
-        if(numero == 1) {
-            troco = dinheiro - 5;
+    public void compra() {
+        Scanner scan = new Scanner(System.in);
+        int dinheiro;
+        int troco;
 
-            System.out.println("Seu troco é ".concat(troco.toString()) );
-        }
-        if(numero == 2) {
-            troco = dinheiro - 3;
+        System.out.println("Informe seu dinheiro: (Ex: 5.00)");
+        dinheiro = scan.nextInt();
 
-            System.out.println("Seu troco é ".concat(troco.toString()) );
-        }
-        if(numero == 3) {
-            troco = dinheiro - 3;
+        troco = (int) (dinheiro - preco);
 
-            System.out.println("Seu troco é ".concat(troco.toString()) );
+        if(dinheiro < preco)
+        {
+            erro();
         }
-        if(numero == 4) {
-            troco = dinheiro - 7;
+        else
+            System.out.print("Seu troco é " + troco);
 
-            System.out.println("Seu troco é ".concat(troco.toString()) );
         }
-        return;
+
+    private void erro()
+    {
+        System.out.print("O dinheiro não é suficiente. =(");
     }
-
-
 }
+
+
+
